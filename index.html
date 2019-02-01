@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+    <title>Key Sequence Detection</title>
+</head>
+<body>
+    <h1>Look at the console</h1>
+    <script>
+        const pressed = [];
+        const secretKey = 'spinach';
+        console.log(`What was Popeye's favourite food? Click on window and enter the answer on your keyboard`);
+
+        window.addEventListener('keyup', e => {
+            pressed.push(e.key);
+            pressed.splice(-secretKey.length - 1, pressed.length - secretKey.length);
+            if (pressed.join('').toLowerCase() === secretKey) {
+                document.querySelector('h1').innerHTML = "You have entered the secret realm!";
+                cornify_add(); 
+            };
+        })
+    </script>
+</body>
+</html>
